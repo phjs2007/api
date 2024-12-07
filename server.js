@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors'; // Importando o CORS
 import gamesGetRoutes from './routes/gamesGet.js';
 import gamesPostRoutes from './routes/gamesPost.js';
+import gamesDelRoutes from './routes/gamesDel.js';
 
 const app = express();
 
@@ -13,7 +14,8 @@ app.use(cors());
 
 // Usando as rotas GET e POST separadas
 app.use('/games', gamesGetRoutes);         // Rota para GET /games
-app.use('/games/create', gamesPostRoutes); // Rota para POST /games/create
+app.use('/games/create', gamesPostRoutes);
+app.use('/games/del', gamesDelRoutes);  // Rota para POST /games/create
 
 const PORT = process.env.PORT || 3001;
 

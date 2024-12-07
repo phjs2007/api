@@ -63,3 +63,5 @@ model Requirements {
   game        Game     @relation(fields: [gameId], references: [id])
 }
 
+
+//senha:DqQCStGX51v6fNyM    mLVGQMc8Cm74bIFz

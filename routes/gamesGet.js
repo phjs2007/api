@@ -26,52 +26,7 @@ router.get("/", async (req, res) => {
 });
 
 // Rota GET para obter detalhes de um jogo específico
-router.get("/:gameId", async (req, res) => {
-    const { gameId } = req.params;  // Extrai o ID do jogo da URL
 
-    // Permite IDs com ou sem `{}` e verifica se é hexadecimal
-    if (!/^\{?[0-9a-fA-F]{24}\}?$/.test(gameId)) {
-        return res.status(400).json({ error: "ID do jogo inválido." });
-    }
-
-    // Remove `{}` do ID antes de usá-lo no banco de dados
-    const sanitizedGameId = gameId.replace(/[{}]/g, '');
-
-    try {
-        const game = await prisma.game.findUnique({
-            where: {
-                id: sanitizedGameId,  // Usa o ID sanitizado
-            },
-            select: {
-                id: true,
-                name: true,
-                description: true,
-                price: true,
-                desconto: true,
-                giantbombImageUrl: true,
-                rawgImageUrl: true,
-                genre: true,
-                plataforma: true,
-                lancamento: true,
-                empresa: true,
-                size: true,
-                requirements: true,
-                highlights: true,
-                closingDescription: true,
-                finalNote: true,
-            },
-        });
-
-        if (!game) {
-            return res.status(404).json({ error: "Jogo não encontrado." });
-        }
-
-        res.status(200).json(game);
-    } catch (error) {
-        console.error("Erro ao buscar jogo:", error);
-        res.status(500).json({ error: "Erro ao buscar jogo." });
-    }
-});
 
 router.get("/recentes", async (req, res) => {
     const limit = parseInt(req.query.limit) || 10; // Limite com valor padrão de 10
@@ -156,6 +111,54 @@ router.get("/vendidos", async (req, res) => {
     } catch (error) {
         console.error("Erro ao buscar jogos vendidos:", error);
         res.status(500).json({ error: "Erro ao buscar jogos vendidos." });
+    }
+});
+
+
+router.get("/:gameId", async (req, res) => {
+    const { gameId } = req.params;  // Extrai o ID do jogo da URL
+
+    // Permite IDs com ou sem `{}` e verifica se é hexadecimal
+    if (!/^\{?[0-9a-fA-F]{24}\}?$/.test(gameId)) {
+        return res.status(400).json({ error: "ID do jogo inválido." });
+    }
+
+    // Remove `{}` do ID antes de usá-lo no banco de dados
+    const sanitizedGameId = gameId.replace(/[{}]/g, '');
+
+    try {
+        const game = await prisma.game.findUnique({
+            where: {
+                id: sanitizedGameId,  // Usa o ID sanitizado
+            },
+            select: {
+                id: true,
+                name: true,
+                description: true,
+                price: true,
+                desconto: true,
+                giantbombImageUrl: true,
+                rawgImageUrl: true,
+                genre: true,
+                plataforma: true,
+                lancamento: true,
+                empresa: true,
+                size: true,
+                requirements: true,
+                highlights: true,
+                closingDescription: true,
+                finalNote: true,
+            },
+        });
+
+        if (!game) {
+            return res.status(404).json({ error: "Jogo não encontrado." });
+        }
+
+        res.status(200).json(game);
+    } catch (error) {
+        console.error("Erro ao buscar jogo:", error);
+        res.status(500).json({ error: "Erro ao buscar jogo." });
     }
 });
 export default router;
