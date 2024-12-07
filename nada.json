@@ -1,0 +1,72 @@
+{
+    "name": "Baldur's Gate 3",
+    "price": 240,
+    "desconto": 40,
+    "title": "Baldur's Gate 3 - RPG Épico",
+    "description": "Baldur's Gate 3 é um RPG épico baseado no universo de Dungeons & Dragons, que mergulha os jogadores em uma história profunda, repleta de escolhas impactantes e batalhas estratégicas. A aventura começa com seu personagem infectado por um parasita mortal, o que desperta poderes misteriosos e o coloca em uma jornada para resistir ao controle ou sucumbir à corrupção.",
+    "highlightsTitle": "Principais destaques do jogo:",
+    "destaque": true,
+    "vendido": true,
+    "highlights": [
+        {
+            "title": "Narrativa rica e cheia de escolhas",
+            "description": "Sua história é moldada por suas decisões, com múltiplos caminhos que levam a finais diferentes."
+        },
+        {
+            "title": "Combate estratégico por turnos",
+            "description": "Inspirado no sistema D&D 5ª Edição, o jogo traz batalhas táticas e dinâmicas que exigem planejamento."
+        },
+        {
+            "title": "Customização profunda",
+            "description": "Crie personagens únicos com dezenas de raças, classes e habilidades, ou jogue com companheiros pré-definidos, cada um com histórias próprias."
+        },
+        {
+            "title": "Exploração e liberdade",
+            "description": "Um vasto mundo aberto onde você pode interagir com NPCs, resolver missões de formas inesperadas e explorar locais repletos de segredos."
+        },
+        {
+            "title": "Multiplayer cooperativo",
+            "description": "Jogue sozinho ou com amigos em um modo cooperativo, unindo estratégias para enfrentar desafios juntos."
+        },
+        {
+            "title": "Gráficos deslumbrantes",
+            "description": "Desenvolvido com a engine Divinity 4.0, o jogo apresenta visuais de tirar o fôlego, que dão vida ao universo de Dungeons & Dragons."
+        }
+    ],
+    "closingDescription": "Prepare-se para forjar sua própria lenda, enquanto descobre os mistérios de Faerûn, faz alianças improváveis e enfrenta perigos imensuráveis. Cada decisão conta, e suas escolhas determinarão o destino do mundo.",
+    "finalNote": "Baldur's Gate 3: uma experiência que combina narrativa emocionante, exploração profunda e batalhas emocionantes, tudo dentro de um universo mágico e inesquecível.",
+    "detalhes": {
+        "genre": [
+            "RPG",
+            "Baseado em turnos",
+            "Fantasia"
+        ],
+        "plataforma": [
+            "Windows (10, 11)",
+            "Mac OS X (12+)"
+        ],
+        "lancamento": "Agosto 3, 2023",
+        "empresa": "Larian Studios",
+        "size": 129.7
+    },
+    "requirements": {
+        "minimum": {
+            "system": "Windows 10 64-bit",
+            "processor": "Intel I5 4690 / AMD FX 8350",
+            "memory": "8 GB RAM",
+            "graphics": "Nvidia GTX 970 / RX 480 (4GB+ de VRAM)",
+            "directX": "Versão 11",
+            "storage": "150 GB de espaço disponível",
+            "other": "SSD necessário"
+        },
+        "recommended": {
+            "system": "Windows 10 64-bit",
+            "processor": "Intel i7 8700K / AMD r5 3600",
+            "memory": "16 GB RAM",
+            "graphics": "Nvidia 2060 Super / RX 5700 XT (8GB+ de VRAM)",
+            "directX": "Versão 11",
+            "storage": "150 GB de espaço disponível",
+            "other": "SSD necessário"
+        }
+    }
+}
