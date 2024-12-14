@@ -115,33 +115,34 @@ router.get("/vendidos", async (req, res) => {
     }
 });
 
-router.get("/rpg", async (req, res) => {
-    const limit = parseInt(req.query.limit) || 10; // Limite com valor padrão de 10
-
-    try {
-        const rpgGames = await prisma.game.findMany({
-            where: {
-                genre: {
-                    has: "RPG",  // Verifica se "RPG" está presente na lista de gêneros
-                },
+router.get("/rpg", async (req, res) => {     
+    const limit = parseInt(req.query.limit) || 21; // Limite com valor padrão de 21     
+    try {         
+        const rpgGames = await prisma.game.findMany({             
+            where: {                 
+                genre: {                     
+                    has: "RPG",  // Verifica se "RPG" está presente na lista de gêneros                 
+                },             
+            },             
+            take: limit, // Limita o número de jogos retornados             
+            orderBy: {
+                id: 'desc', // Ordena os jogos pelo ID de forma decrescente (últimos primeiros)
             },
-            take: limit, // Limita o número de jogos retornados
-            select: {
-                id: true,
-                name: true,
-                price: true,
-                desconto: true,
-                rawgImageUrl: true,
-                lancamento: true,
-                genre: true,  // Inclui o gênero na resposta
-            },
-        });
-
-        res.status(200).json(rpgGames);
-    } catch (error) {
-        console.error("Erro ao buscar jogos RPG:", error);
-        res.status(500).json({ error: "Erro ao buscar jogos RPG." });
-    }
+            select: {                 
+                id: true,                 
+                name: true,                 
+                price: true,                 
+                desconto: true,                 
+                rawgImageUrl: true,                 
+                lancamento: true,                 
+                genre: true,  // Inclui o gênero na resposta             
+            },         
+        });          
+        res.status(200).json(rpgGames);     
+    } catch (error) {         
+        console.error("Erro ao buscar jogos RPG:", error);         
+        res.status(500).json({ error: "Erro ao buscar jogos RPG." });     
+    } 
 });
 
 router.get("/todos", async (req, res) => {
