@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     try {
         const games = await prisma.game.findMany({
-            take: 10,  // Limita a 10 jogos
+            take: 9,  // Limita a 10 jogos
             select: {
                 id: true,
                 name: true,  // Nome do jogo
@@ -72,6 +72,7 @@ router.get("/destaques", async (req, res) => {
                 price: true,
                 desconto: true,
                 rawgImageUrl: true,
+                giantbombImageUrl: true,
                 lancamento: true,
                 destaque: true, // Inclui a propriedade destaque na resposta
             },
@@ -111,6 +112,56 @@ router.get("/vendidos", async (req, res) => {
     } catch (error) {
         console.error("Erro ao buscar jogos vendidos:", error);
         res.status(500).json({ error: "Erro ao buscar jogos vendidos." });
+    }
+});
+
+router.get("/rpg", async (req, res) => {
+    const limit = parseInt(req.query.limit) || 10; // Limite com valor padrão de 10
+
+    try {
+        const rpgGames = await prisma.game.findMany({
+            where: {
+                genre: {
+                    has: "RPG",  // Verifica se "RPG" está presente na lista de gêneros
+                },
+            },
+            take: limit, // Limita o número de jogos retornados
+            select: {
+                id: true,
+                name: true,
+                price: true,
+                desconto: true,
+                rawgImageUrl: true,
+                lancamento: true,
+                genre: true,  // Inclui o gênero na resposta
+            },
+        });
+
+        res.status(200).json(rpgGames);
+    } catch (error) {
+        console.error("Erro ao buscar jogos RPG:", error);
+        res.status(500).json({ error: "Erro ao buscar jogos RPG." });
+    }
+});
+
+router.get("/todos", async (req, res) => {
+    try {
+        const allGames = await prisma.game.findMany({
+            select: {
+                id: true,
+                name: true,
+                price: true,
+                desconto: true,
+                rawgImageUrl: true,
+                giantbombImageUrl: true,
+                genre: true
+            },
+        });
+
+        res.status(200).json(allGames);
+    } catch (error) {
+        console.error("Erro ao buscar todos os jogos:", error);
+        res.status(500).json({ error: "Erro ao buscar todos os jogos." });
     }
 });
 

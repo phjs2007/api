@@ -5,7 +5,7 @@ const getGameImages = async (gameName) => {
         // Chamada à API da RAWG
         const rawgResponse = await axios.get(`https://api.rawg.io/api/games`, {
             params: {
-                key: '5c9096f394604df78773f0ae90827f33',
+                key: process.env.RAWG_API_KEY,
                 page_size: 1,
                 search: gameName,
             },
@@ -15,7 +15,7 @@ const getGameImages = async (gameName) => {
         // Chamada à API da Giant Bomb
         const giantbombResponse = await axios.get(`https://www.giantbomb.com/api/search`, {
             params: {
-                api_key: '0fd33f6e40cbced5aca486335bf8b2b3349dbd53',
+                api_key: process.env.GIANT_BOMB_API_KEY,
                 format: 'json',
                 query: gameName,
                 resources: 'game',
