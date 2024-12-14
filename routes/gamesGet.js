@@ -121,7 +121,7 @@ router.get("/rpg", async (req, res) => {
         const rpgGames = await prisma.game.findMany({             
             where: {                 
                 genre: {                     
-                    has: "RPG",  // Verifica se "RPG" está presente na lista de gêneros                 
+                    has: "Indie",  // Verifica se "RPG" está presente na lista de gêneros                 
                 },             
             },             
             take: limit, // Limita o número de jogos retornados             
